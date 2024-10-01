@@ -3,6 +3,7 @@ package src;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import ui.MenuPrincipal;
 
 /**
  *
@@ -14,6 +15,8 @@ public class Menu {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
+        
+        MenuPrincipal mp = new MenuPrincipal();
         
         // Variables necesarias para el menu
         boolean run = true;
