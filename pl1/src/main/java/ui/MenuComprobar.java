@@ -35,20 +35,20 @@ public class MenuComprobar extends JFrame implements ActionListener {
         btnER2 = new JButton();
         btnVolver = new JButton();
 
-        titulo.setFont(new java.awt.Font("Ebrima", 1, 24));
+        titulo.setFont(new Font("Ebrima", 1, 24));
         titulo.setText("¿Qué es lo que quieres comprobar?");
         
-        btnER1.setFont(new java.awt.Font("Ebrima", 0, 14));
+        btnER1.setFont(new Font("Ebrima", 0, 14));
         btnER1.setText("Comprobar que haya al menos 3 as seguidas en la cadena");
         btnER1.setFocusable(false);
         btnER1.addActionListener(this);
 
-        btnER2.setFont(new java.awt.Font("Ebrima", 0, 14));
+        btnER2.setFont(new Font("Ebrima", 0, 14));
         btnER2.setText("Comprobar que la cadena esté compuesta por secuencias 'abc' o 'cba'");
         btnER2.setFocusable(false);
         btnER2.addActionListener(this);
 
-        btnVolver.setFont(new java.awt.Font("Ebrima", 0, 14));
+        btnVolver.setFont(new Font("Ebrima", 0, 14));
         btnVolver.setText("Volver");
         btnVolver.setFocusable(false);
         btnVolver.addActionListener(this);
