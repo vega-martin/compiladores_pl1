@@ -110,12 +110,12 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         } else if(componente == btnGenerar){
             
             this.setVisible(false);
-            // Menu generar
+            MenuGenerar mg = new MenuGenerar();
             
         } else {
             
             this.setVisible(false);
-            // Menu modificar
+            MenuModificar mm = new MenuModificar();
             
         }
     }
