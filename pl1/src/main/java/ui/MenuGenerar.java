@@ -1,14 +1,19 @@
 package ui;
 
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
-import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -16,16 +21,17 @@ import javax.swing.GroupLayout;
  */
 public class MenuGenerar extends JFrame implements ActionListener {
     
-    private javax.swing.JLabel titulo;
-    private javax.swing.JLabel lbNumero;
-    private javax.swing.JLabel lbLongitud;
-    private javax.swing.JLabel lbElegir;
-    private javax.swing.JTextField tfNumero;
-    private javax.swing.JTextField tfLongitud;
-    private javax.swing.JToggleButton tgBtnER1;
-    private javax.swing.JToggleButton tgBtnER2;
-    private javax.swing.JButton btnVolver;
-    private javax.swing.JButton btnGenerar;
+    private JLabel titulo;
+    private JLabel lbNumero;
+    private JLabel lbLongitud;
+    private JLabel lbElegir;
+    private MaskFormatter mascara;
+    private JFormattedTextField tfNumero;
+    private JFormattedTextField tfLongitud;
+    private JToggleButton tgBtnER1;
+    private JToggleButton tgBtnER2;
+    private JButton btnVolver;
+    private JButton btnGenerar;
     
     
     public MenuGenerar() {
@@ -43,8 +49,13 @@ public class MenuGenerar extends JFrame implements ActionListener {
         lbNumero = new JLabel();
         lbLongitud = new JLabel();
         lbElegir = new JLabel();
-        tfNumero = new JTextField();
-        tfLongitud = new JTextField();
+        try {
+            mascara = new MaskFormatter("###");
+        } catch (ParseException ex) {
+            Logger.getLogger(MenuGenerar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tfNumero = new JFormattedTextField(mascara);
+        tfLongitud = new JFormattedTextField(mascara);
         tgBtnER1 = new JToggleButton();
         tgBtnER2 = new JToggleButton();
         btnVolver = new JButton();
@@ -61,12 +72,12 @@ public class MenuGenerar extends JFrame implements ActionListener {
 
         lbElegir.setFont(new Font("Ebrima", 0, 14));
         lbElegir.setText("Elige la Expresión Regular que quieras usar para generar las cadenas: ");
-
+        
         tfNumero.setFont(new Font("Ebrima", 0, 14));
-        tfNumero.setText("jTextField1");
+        tfNumero.setPreferredSize(new Dimension(150, 20));
 
         tfLongitud.setFont(new Font("Ebrima", 0, 14));
-        tfLongitud.setText("jTextField1");
+        tfLongitud.setPreferredSize(new Dimension(150, 20));
         
         tgBtnER1.setFont(new Font("Ebrima", 0, 14));
         tgBtnER1.setText("Que haya al menos 3 as seguidas en la cadena");
