@@ -23,38 +23,39 @@ public class InterfazGráfica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnComprobar = new javax.swing.JButton();
-        btnGenerar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
+        btnER1 = new javax.swing.JButton();
+        btnER2 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
-        subtitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnComprobar.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
-        btnComprobar.setText("Comprobar una cadena");
-
-        btnGenerar.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
-        btnGenerar.setText("Generar cadenas");
-        btnGenerar.addActionListener(new java.awt.event.ActionListener() {
+        btnER1.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
+        btnER1.setText("Comprobar que haya al menos 3 as seguidas en la cadena");
+        btnER1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGenerarActionPerformed(evt);
+                btnER1ActionPerformed(evt);
             }
         });
 
-        btnModificar.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
-        btnModificar.setText("Modificar matriz de estados");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        btnER2.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
+        btnER2.setText("Comprobar que la cadena esté compuesta por secuencias 'abc' o 'cba'");
+        btnER2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                btnER2ActionPerformed(evt);
+            }
+        });
+
+        btnVolver.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
             }
         });
 
         titulo.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        titulo.setText("PRÁCTICA 1 - EXPRESIONES REGULARES");
-
-        subtitulo.setFont(new java.awt.Font("Ebrima", 0, 18)); // NOI18N
-        subtitulo.setText("¿Qué acción quieres realizar?");
+        titulo.setText("¿Qué es lo que quieres comprobar?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,44 +65,46 @@ public class InterfazGráfica extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(193, 193, 193)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnComprobar, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addComponent(subtitulo)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                        .addGap(129, 129, 129)
+                        .addComponent(titulo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 66, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnER2, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+                    .addComponent(btnER1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(44, 44, 44)
                 .addComponent(titulo)
-                .addGap(42, 42, 42)
-                .addComponent(subtitulo)
-                .addGap(58, 58, 58)
-                .addComponent(btnComprobar)
+                .addGap(98, 98, 98)
+                .addComponent(btnER1)
                 .addGap(26, 26, 26)
-                .addComponent(btnGenerar)
-                .addGap(26, 26, 26)
-                .addComponent(btnModificar)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addComponent(btnER2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addComponent(btnVolver)
+                .addGap(63, 63, 63))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
+    private void btnER2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnER2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnGenerarActionPerformed
+    }//GEN-LAST:event_btnER2ActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnModificarActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnER1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnER1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnER1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,10 +142,9 @@ public class InterfazGráfica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnComprobar;
-    private javax.swing.JButton btnGenerar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JLabel subtitulo;
+    private javax.swing.JButton btnER1;
+    private javax.swing.JButton btnER2;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

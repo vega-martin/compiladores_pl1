@@ -23,6 +23,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     public MenuPrincipal() {
         super("Compiladores - PL1");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setVisible(true);
         initComponents();
     }
@@ -103,7 +105,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         if(componente == btnComprobar){
             
             this.setVisible(false);        
-            // Menu comprobar
+            MenuComprobar mc = new MenuComprobar();
             
         } else if(componente == btnGenerar){
             

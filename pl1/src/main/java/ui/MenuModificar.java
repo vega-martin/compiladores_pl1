@@ -7,6 +7,6 @@ import javax.swing.JFrame;
  *
  * @author Vega
  */
-public class MenuModificar extends JFrame implements ActionListener {
+public class MenuModificar /*extends JFrame implements ActionListener*/ {
     
 }
