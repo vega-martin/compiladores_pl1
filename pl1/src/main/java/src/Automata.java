@@ -11,7 +11,7 @@ public class Automata {
     
     private List<Character> alfabeto;
     private List<Integer> estados;
-    private int estadoIncicial;
+    private Integer estadoInicial;
     private List<Integer> estadosFinales;
     private List<List<Integer>> estadoSalto;
     private HashMap<Integer, HashMap<Character, Integer>> matriz;
@@ -33,8 +33,8 @@ public class Automata {
         this.estados = estados;
     }
 
-    public void setEstadoIncicial(int estadoIncicial) {
-        this.estadoIncicial = estadoIncicial;
+    public void setEstadoIncicial(Integer estadoInicial) {
+        this.estadoInicial = estadoInicial;
     }
 
     public void setEstadosFinales(List estadosFinales) {
@@ -64,5 +64,17 @@ public class Automata {
         }
     }
     
+    // Esta funcion es llamada por la maquina de estados
+    public Integer getSiguienteEstado(Integer estadoActual, Character letra) {
+        return matriz.get(estadoActual).get(letra);
+    }
+    
+    public boolean esFinal(Integer estado) {
+        return estadosFinales.contains(estado);
+    }
+    
+    public Integer getEstadoInicial() {
+        return this.estadoInicial;
+    }
     
 }
