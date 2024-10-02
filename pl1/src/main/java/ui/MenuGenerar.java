@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.GroupLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.LayoutStyle;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -99,7 +98,7 @@ public class MenuGenerar extends JFrame implements ActionListener {
         tgBtnER2.setFont(new Font("Ebrima", 0, 14));
         tgBtnER2.setText("Que la cadena esté compuesta por secuencias 'abc' o 'cba'");
         tgBtnER2.setFocusable(false);
-
+        
         btnVolver.setFont(new Font("Ebrima", 0, 14));
         btnVolver.setText("Volver");
         btnVolver.setFocusable(false);
@@ -178,7 +177,9 @@ public class MenuGenerar extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent evento) {
         Object componente = evento.getSource();
-        
+        if(componente == tgBtnER1) {
+            tgBtnER2.setSelected(false);
+        }
         if(componente == btnVolver){
             
             this.setVisible(false);        
