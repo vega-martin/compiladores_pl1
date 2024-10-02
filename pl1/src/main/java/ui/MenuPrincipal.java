@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,12 +19,12 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     private JLabel titulo;
     private JButton btnComprobar;
     private JButton btnGenerar;
-    private JButton btnModificar;
+    private JButton btnIntercambiar;
     
     public MenuPrincipal() {
         super("Compiladores - PL1");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        //this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
         initComponents();
@@ -35,7 +36,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         subtitulo = new JLabel();
         btnComprobar = new JButton();
         btnGenerar = new JButton();
-        btnModificar = new JButton();
+        btnIntercambiar = new JButton();
         
         titulo.setFont(new Font("Ebrima", 1, 24));
         titulo.setText("PRÁCTICA 1 - EXPRESIONES REGULARES");
@@ -53,10 +54,10 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         btnGenerar.setFocusable(false);
         btnGenerar.addActionListener(this);
 
-        btnModificar.setFont(new Font("Ebrima", 0, 14));
-        btnModificar.setText("Modificar matriz de estados");
-        btnModificar.setFocusable(false);
-        btnModificar.addActionListener(this);
+        btnIntercambiar.setFont(new Font("Ebrima", 0, 14));
+        btnIntercambiar.setText("Intercambiar matrices de estados");
+        btnIntercambiar.setFocusable(false);
+        btnIntercambiar.addActionListener(this);
 
         GroupLayout layout = new GroupLayout(getContentPane());
         
@@ -68,7 +69,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(193, 193, 193)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(btnModificar, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnIntercambiar, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnComprobar, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGenerar, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -91,7 +92,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
                 .addGap(26, 26, 26)
                 .addComponent(btnGenerar)
                 .addGap(26, 26, 26)
-                .addComponent(btnModificar)
+                .addComponent(btnIntercambiar)
                 .addContainerGap(115, Short.MAX_VALUE))
         );
 
@@ -102,20 +103,23 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent evento) {
         Object componente = evento.getSource();
         
-        if(componente == btnComprobar){
+        if(componente == btnComprobar) {
             
             this.setVisible(false);        
             MenuComprobar mc = new MenuComprobar();
             
-        } else if(componente == btnGenerar){
+        } else if(componente == btnGenerar) {
             
             this.setVisible(false);
             MenuGenerar mg = new MenuGenerar();
             
-        } else {
+        } else if(componente == btnIntercambiar) {
             
-            this.setVisible(false);
-            MenuModificar mm = new MenuModificar();
+            // Llamar a intercambiar matrices
+            
+            JOptionPane.showMessageDialog(this,
+                "Las matrices de estado se han intercambiado correctamente.\nTenga cuidado a la hora de seleccionar las ERs a partir de ahora.",
+                "CUIDADO",JOptionPane.WARNING_MESSAGE);
             
         }
     }

@@ -22,7 +22,7 @@ public class MenuComprobar extends JFrame implements ActionListener {
     public MenuComprobar() {
         super("Compiladores - PL1");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        //this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
         initComponents();

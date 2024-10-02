@@ -17,7 +17,7 @@ public class Menu {
     public static void main(String[] args) throws IOException {
         
         MenuPrincipal mp = new MenuPrincipal();
-        
+        /*
         // Variables necesarias para el menu
         boolean run = true;
         String eleccion;
@@ -56,7 +56,7 @@ public class Menu {
             }
             
             
-        } while (run);
+        } while (run);*/
     }
     
 }
