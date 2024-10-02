@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -7,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout;
+import javax.swing.JTextField;
 
 /**
  *
@@ -15,8 +17,10 @@ import javax.swing.GroupLayout;
 public class MenuComprobar extends JFrame implements ActionListener {
     
     private JLabel titulo;
+    private JTextField tfCadena;
     private JButton btnER1;
     private JButton btnER2;
+    private JLabel resultado;
     private JButton btnVolver;
     
     public MenuComprobar() {
@@ -31,12 +35,17 @@ public class MenuComprobar extends JFrame implements ActionListener {
     private void initComponents() {
 
         titulo = new JLabel();
+        tfCadena = new JTextField();
         btnER1 = new JButton();
         btnER2 = new JButton();
+        resultado = new JLabel();
         btnVolver = new JButton();
 
         titulo.setFont(new Font("Ebrima", 1, 24));
         titulo.setText("¿Qué es lo que quieres comprobar?");
+        
+        tfCadena.setFont(new java.awt.Font("Ebrima", 0, 14));
+        tfCadena.setText("Introduce la cadena");
         
         btnER1.setFont(new Font("Ebrima", 0, 14));
         btnER1.setText("Comprobar que haya al menos 3 as seguidas en la cadena");
@@ -48,6 +57,10 @@ public class MenuComprobar extends JFrame implements ActionListener {
         btnER2.setFocusable(false);
         btnER2.addActionListener(this);
 
+        resultado.setFont(new Font("Ebrima", 0, 18));
+        resultado.setForeground(Color.BLUE);
+        resultado.setText("RESULTADO");
+        
         btnVolver.setFont(new Font("Ebrima", 0, 14));
         btnVolver.setText("Volver");
         btnVolver.setFocusable(false);
@@ -64,7 +77,10 @@ public class MenuComprobar extends JFrame implements ActionListener {
                         .addComponent(btnVolver, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
-                        .addComponent(titulo)))
+                        .addComponent(titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(262, 262, 262)
+                        .addComponent(resultado)))
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 66, Short.MAX_VALUE)
@@ -72,19 +88,27 @@ public class MenuComprobar extends JFrame implements ActionListener {
                     .addComponent(btnER2, GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
                     .addComponent(btnER1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(64, 64, 64))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(tfCadena, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(252, 252, 252))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(titulo)
-                .addGap(98, 98, 98)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(tfCadena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addComponent(btnER1)
-                .addGap(26, 26, 26)
+                .addGap(30, 30, 30)
                 .addComponent(btnER2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
+                .addComponent(resultado)
+                .addGap(51, 51, 51)
                 .addComponent(btnVolver)
-                .addGap(63, 63, 63))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -94,15 +118,15 @@ public class MenuComprobar extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent evento) {
         Object componente = evento.getSource();
         
+        boolean cadenaCorrecta = true;
+        
         if(componente == btnER1){
             
-            this.setVisible(false);        
-            // Menu comprobar
+            // Llamar AFD1.comprobar()
             
         } else if(componente == btnER2){
             
-            this.setVisible(false);
-            // Menu generar
+            // Llamar AFD2.comprobar()
             
         } else if(componente == btnVolver) {
             
@@ -110,6 +134,15 @@ public class MenuComprobar extends JFrame implements ActionListener {
             MenuPrincipal mp = new MenuPrincipal();
             
         }
+        
+        if(cadenaCorrecta) {
+            resultado.setForeground(Color.GREEN);
+            resultado.setText("CORRECTA");
+        } else {
+            resultado.setForeground(Color.RED);
+            resultado.setText("INCORRECTA");
+        }
+        
     }
     
 }

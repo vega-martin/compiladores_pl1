@@ -1,12 +1,13 @@
 ui\MenuGenerar.class
-src\Menu.class
 ui\MenuGenerar$1.class
 ui\InterfazGráfica$1.class
-src\Automata.class
 src\MaquinaDeEstados.class
-ui\InterfazGráfica$3.class
 ui\InterfazGráfica.class
 ui\MenuPrincipal.class
 ui\InterfazGráfica$2.class
+src\Menu.class
+src\Automata.class
+ui\InterfazGráfica$3.class
 ui\MenuComprobar.class
+ui\InterfazGráfica$4.class
 ui\MenuGenerar$2.class
