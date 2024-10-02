@@ -7,7 +7,7 @@ import ui.MenuPrincipal;
  *
  * @author Vega
  */
-public class Menu {
+public class Main {
 
     /**
      * @param args the command line arguments

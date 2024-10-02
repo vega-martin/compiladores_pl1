@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,13 +17,12 @@ public class Automata {
     private List<List<Integer>> estadoSalto;
     private HashMap<Integer, HashMap<Character, Integer>> matriz;
     
-    public void Automata(){
-        /*
-        setAlfabeto();
-        setEstados();
-        setEstadoInicial();
-        setEstadosFinales();
-        */
+    public Automata(List alfabeto, List estados, Integer estadoInicial,
+            List estadosFinales, List<List<Integer>> estadoSalto){
+        
+        inicializarAtributos();
+        cargarAtributos(alfabeto, estados, estadoInicial, estadosFinales, estadoSalto);
+        cargarMatriz();
     }
 
     public void setAlfabeto(List<Character> alfabeto) {
@@ -33,7 +33,7 @@ public class Automata {
         this.estados = estados;
     }
 
-    public void setEstadoIncicial(Integer estadoInicial) {
+    public void setEstadoInicial(Integer estadoInicial) {
         this.estadoInicial = estadoInicial;
     }
 
@@ -45,13 +45,39 @@ public class Automata {
         this.estadoSalto = estadoSalto;
     }
     
-    private void inicializarMatriz() {
+    public Integer getSiguienteEstado(Integer estadoActual, Character letra) {
+        return matriz.get(estadoActual).get(letra);
+    }
+    
+    public Integer getEstadoInicial() {
+        return this.estadoInicial;
+    }
+    
+    public boolean esFinal(Integer estado) {
+        return estadosFinales.contains(estado);
+    }
+    
+    private void inicializarAtributos() {
+        alfabeto = new ArrayList<Character>();
+        estados = new ArrayList<Integer>();
+        estadosFinales = new ArrayList<Integer>();
+        estadoSalto = new ArrayList<>();
         for(Integer estado:estados) {
             matriz.put(estado, new HashMap<Character, Integer>());
         }
     }
     
-    private void cargarMatriz(){
+    private void cargarAtributos(List alfabeto, List estados, Integer estadoInicial,
+            List estadosFinales, List<List<Integer>> estadoSalto) {
+        
+        setAlfabeto(alfabeto);
+        setEstados(estados);
+        setEstadoInicial(estadoInicial);
+        setEstadosFinales(estadosFinales);
+        setEstadoSalto(estadoSalto);
+    }
+    
+    private void cargarMatriz() {
         //parametro lista de listas con los estados de salto
         int i = 0;
         int j = 0;
@@ -63,18 +89,4 @@ public class Automata {
             i++;
         }
     }
-    
-    // Esta funcion es llamada por la maquina de estados
-    public Integer getSiguienteEstado(Integer estadoActual, Character letra) {
-        return matriz.get(estadoActual).get(letra);
-    }
-    
-    public boolean esFinal(Integer estado) {
-        return estadosFinales.contains(estado);
-    }
-    
-    public Integer getEstadoInicial() {
-        return this.estadoInicial;
-    }
-    
 }
