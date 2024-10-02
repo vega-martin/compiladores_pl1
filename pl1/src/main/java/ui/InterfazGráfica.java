@@ -25,8 +25,6 @@ public class InterfazGráfica extends javax.swing.JFrame {
 
         btnVolver = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
-        lbNumero = new javax.swing.JLabel();
-        lbLongitud = new javax.swing.JLabel();
         lbElegir = new javax.swing.JLabel();
         tgBtnER1 = new javax.swing.JToggleButton();
         tgBtnER2 = new javax.swing.JToggleButton();
@@ -46,13 +44,7 @@ public class InterfazGráfica extends javax.swing.JFrame {
         });
 
         titulo.setFont(new java.awt.Font("Ebrima", 1, 24)); // NOI18N
-        titulo.setText("¿Qué expresión regular quieres modificar?");
-
-        lbNumero.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
-        lbNumero.setText("Nº de cadenas a generar: ");
-
-        lbLongitud.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
-        lbLongitud.setText("Longitud de las cadenas a generar: ");
+        titulo.setText("¿Qué es lo que quieres comprobar?");
 
         lbElegir.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         lbElegir.setText("Elige la Expresión Regular que quieras usar para generar las cadenas: ");
@@ -67,6 +59,16 @@ public class InterfazGráfica extends javax.swing.JFrame {
 
         tfLongitud.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         tfLongitud.setText("jTextField1");
+        tfLongitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfLongitudActionPerformed(evt);
+            }
+        });
+        tfLongitud.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfLongitudKeyTyped(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -81,40 +83,35 @@ public class InterfazGráfica extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(titulo)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lbElegir)
                                 .addComponent(tgBtnER2, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tgBtnER1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbNumero)
-                                        .addComponent(lbLongitud))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(86, 86, 86)
-                            .addComponent(titulo))))
-                .addContainerGap(89, Short.MAX_VALUE))
+                                    .addGap(212, 212, 212)
+                                    .addComponent(tfLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(titulo)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbNumero)
-                        .addGap(56, 56, 56)
-                        .addComponent(lbLongitud)
-                        .addGap(16, 16, 16)
-                        .addComponent(tfLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addGap(17, 17, 17)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)))
                 .addComponent(lbElegir)
                 .addGap(18, 18, 18)
                 .addComponent(tgBtnER1)
@@ -131,6 +128,14 @@ public class InterfazGráfica extends javax.swing.JFrame {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void tfLongitudKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfLongitudKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLongitudKeyTyped
+
+    private void tfLongitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLongitudActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLongitudActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,8 +177,6 @@ public class InterfazGráfica extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbElegir;
-    private javax.swing.JLabel lbLongitud;
-    private javax.swing.JLabel lbNumero;
     private javax.swing.JTextField tfLongitud;
     private javax.swing.JToggleButton tgBtnER1;
     private javax.swing.JToggleButton tgBtnER2;

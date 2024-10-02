@@ -40,14 +40,15 @@ public class MaquinaDeEstados {
         return false;
     }
     
-    public String[] generaCadena(int cantidad, int longitud){
+    public String generaCadena(int cantidad, int longitud){
         String cadenasGeneradas[] = new String[cantidad];
         
         for(int i = 0; i <= cantidad; i++){
             // Codigo para generar cadenas
         }
+        String stringCadenasGeneradas = "hoal";
         
-        return cadenasGeneradas;
+        return stringCadenasGeneradas;
     }
     
 }

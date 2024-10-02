@@ -4,18 +4,17 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.text.MaskFormatter;
+import javax.swing.JTextField;
 
 /**
  *
@@ -29,13 +28,14 @@ public class MenuGenerar extends JFrame implements ActionListener {
     private JLabel lbNumero;
     private JLabel lbLongitud;
     private JLabel lbElegir;
-    private MaskFormatter mascara;
-    private JFormattedTextField tfNumero;
-    private JFormattedTextField tfLongitud;
+    private JTextField tfNumero;
+    private JTextField tfLongitud;
     private JToggleButton tgBtnER1;
     private JToggleButton tgBtnER2;
     private JButton btnVolver;
     private JButton btnGenerar;
+    private boolean isER1seleccionado = true;
+    private boolean isERseleccionado = false;
     
     
     public MenuGenerar() {
@@ -55,13 +55,8 @@ public class MenuGenerar extends JFrame implements ActionListener {
         lbNumero = new JLabel();
         lbLongitud = new JLabel();
         lbElegir = new JLabel();
-        try {
-            mascara = new MaskFormatter("#####");
-        } catch (ParseException ex) {
-            Logger.getLogger(MenuGenerar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        tfNumero = new JFormattedTextField(mascara);
-        tfLongitud = new JFormattedTextField(mascara);
+        tfNumero = new JTextField();
+        tfLongitud = new JTextField();
         tgBtnER1 = new JToggleButton();
         tgBtnER2 = new JToggleButton();
         btnVolver = new JButton();
@@ -87,17 +82,29 @@ public class MenuGenerar extends JFrame implements ActionListener {
         
         tfNumero.setFont(new Font("Ebrima", 0, 14));
         tfNumero.setPreferredSize(new Dimension(50, 20));
+        tfNumero.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                tfNumeroKeyTyped(evt);
+            }
+        });
 
         tfLongitud.setFont(new Font("Ebrima", 0, 14));
         tfLongitud.setPreferredSize(new Dimension(50, 20));
+        tfLongitud.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                tfLongitudKeyTyped(evt);
+            }
+        });
         
         tgBtnER1.setFont(new Font("Ebrima", 0, 14));
         tgBtnER1.setText("Que haya al menos 3 as seguidas en la cadena");
         tgBtnER1.setFocusable(false);
+        tgBtnER1.addActionListener(this);
 
         tgBtnER2.setFont(new Font("Ebrima", 0, 14));
         tgBtnER2.setText("Que la cadena esté compuesta por secuencias 'abc' o 'cba'");
         tgBtnER2.setFocusable(false);
+        tgBtnER2.addActionListener(this);
         
         btnVolver.setFont(new Font("Ebrima", 0, 14));
         btnVolver.setText("Volver");
@@ -174,22 +181,55 @@ public class MenuGenerar extends JFrame implements ActionListener {
         pack();
     }
     
+    private void tfLongitudKeyTyped(KeyEvent evt) {
+        if(!Character.isDigit(evt.getKeyChar())){
+            evt.consume();
+        }
+    }
+    
+    private void tfNumeroKeyTyped(KeyEvent evt) {
+        if(!Character.isDigit(evt.getKeyChar())){
+            evt.consume();
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent evento) {
         Object componente = evento.getSource();
+        
         if(componente == tgBtnER1) {
             tgBtnER2.setSelected(false);
+            isER1seleccionado = true;
+        } else if (componente == tgBtnER2) {
+            tgBtnER1.setSelected(false);
+            isER1seleccionado = false;
         }
-        if(componente == btnVolver){
+        
+        isERseleccionado = (tgBtnER1.isSelected() || tgBtnER2.isSelected());
+        
+        if(componente == btnVolver) {
             
             this.setVisible(false);        
             MenuPrincipal mp = new MenuPrincipal();
             
-        } else if(componente == btnGenerar){
-            
-            this.setVisible(false);
-            // Menu generar
-            
+        } else if(componente == btnGenerar) {
+            if(isERseleccionado && (tfLongitud.getText() != "") && (tfNumero.getText() != "")){
+                int cantidad = Integer.parseInt(tfNumero.getText());
+                int longitud = Integer.parseInt(tfLongitud.getText());
+                String cadenas = "hola";
+
+                if(isER1seleccionado) {
+                    // Llamar cadenas = AFD1.generar(cantidad, longitud);
+                } else {
+                    // Llamar cadenas = AFD2.generar(cantidad, longitud)
+                }
+
+                taCadenasGeneradas.setText(cadenas);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                "Rellene todos los campos y selecciona una ER antes de realizar esta operación.",
+                "CUIDADO",JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
     
