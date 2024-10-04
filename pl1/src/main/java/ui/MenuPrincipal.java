@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout;
 import javax.swing.JOptionPane;
+import src.MaquinaDeEstados;
 
 /**
  *
@@ -20,10 +21,13 @@ public class MenuPrincipal extends JFrame implements ActionListener {
     private JButton btnComprobar;
     private JButton btnGenerar;
     private JButton btnIntercambiar;
+    private MaquinaDeEstados mde1, mde2;
     
-    public MenuPrincipal() {
+    public MenuPrincipal(MaquinaDeEstados mde1, MaquinaDeEstados mde2) {
         super("Compiladores - PL1");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.mde1 = mde1;
+        this.mde2 = mde2;
         //this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
@@ -106,12 +110,12 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         if(componente == btnComprobar) {
             
             this.setVisible(false);        
-            MenuComprobar mc = new MenuComprobar();
+            MenuComprobar mc = new MenuComprobar(mde1, mde2);
             
         } else if(componente == btnGenerar) {
             
             this.setVisible(false);
-            MenuGenerar mg = new MenuGenerar();
+            MenuGenerar mg = new MenuGenerar(mde1, mde2);
             
         } else if(componente == btnIntercambiar) {
             

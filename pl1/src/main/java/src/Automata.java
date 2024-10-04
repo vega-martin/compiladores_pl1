@@ -20,8 +20,7 @@ public class Automata {
     public Automata(List alfabeto, List estados, Integer estadoInicial,
             List estadosFinales, List<List<Integer>> estadoSalto){
         
-        inicializarAtributos();
-        cargarAtributos(alfabeto, estados, estadoInicial, estadosFinales, estadoSalto);
+        inicializarAtributos(alfabeto, estados, estadoInicial, estadosFinales, estadoSalto);
         cargarMatriz();
     }
 
@@ -57,13 +56,17 @@ public class Automata {
         return estadosFinales.contains(estado);
     }
     
-    private void inicializarAtributos() {
-        alfabeto = new ArrayList<Character>();
-        estados = new ArrayList<Integer>();
-        estadosFinales = new ArrayList<Integer>();
-        estadoSalto = new ArrayList<>();
-        for(Integer estado:estados) {
-            matriz.put(estado, new HashMap<Character, Integer>());
+    private void inicializarAtributos(List alfabeto, List estados, Integer estadoInicial,
+            List estadosFinales, List<List<Integer>> estadoSalto) {
+        this.alfabeto = new ArrayList<Character>();
+        this.estados = new ArrayList<Integer>();
+        this.estadosFinales = new ArrayList<Integer>();
+        this.estadoSalto = new ArrayList<>();
+        cargarAtributos(alfabeto, estados, estadoInicial, estadosFinales, estadoSalto);
+        
+        this.matriz = new HashMap<>();
+        for(Integer estado:this.estados) {
+            this.matriz.put(estado, new HashMap<Character, Integer>());
         }
     }
     
@@ -86,7 +89,9 @@ public class Automata {
                 matriz.get(estado).put(letra, estadoSalto.get(i).get(j));
                 j++;
             }
+            j=0;
             i++;
         }
+        
     }
 }

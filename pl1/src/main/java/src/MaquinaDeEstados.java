@@ -42,7 +42,7 @@ public class MaquinaDeEstados {
                 return false;
             }
             
-            if((this.isFinal()) && ((i-cadena.length()) < 1)) {
+            if(this.isFinal() && ((cadena.length()-i) == 1)) {
                 return true;
             }
             

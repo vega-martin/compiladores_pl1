@@ -108,7 +108,7 @@ public class Main {
         
         
         // Inicializar interfaz
-        MenuPrincipal mp = new MenuPrincipal();
+        MenuPrincipal mp = new MenuPrincipal(mde1, mde2);
         
     }
     

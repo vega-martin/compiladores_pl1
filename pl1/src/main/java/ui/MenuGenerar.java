@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import src.MaquinaDeEstados;
 
 /**
  *
@@ -36,11 +37,14 @@ public class MenuGenerar extends JFrame implements ActionListener {
     private JButton btnGenerar;
     private boolean isER1seleccionado = true;
     private boolean isERseleccionado = false;
+    private MaquinaDeEstados mde1, mde2;
     
     
-    public MenuGenerar() {
+    public MenuGenerar(MaquinaDeEstados mde1, MaquinaDeEstados mde2) {
         super("Compiladores - PL1");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.mde1 = mde1;
+        this.mde2 = mde2;
         //this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
@@ -210,7 +214,7 @@ public class MenuGenerar extends JFrame implements ActionListener {
         if(componente == btnVolver) {
             
             this.setVisible(false);        
-            MenuPrincipal mp = new MenuPrincipal();
+            MenuPrincipal mp = new MenuPrincipal(mde1, mde2);
             
         } else if(componente == btnGenerar) {
             if(isERseleccionado && (tfLongitud.getText() != "") && (tfNumero.getText() != "")){

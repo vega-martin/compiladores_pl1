@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout;
 import javax.swing.JTextField;
+import src.MaquinaDeEstados;
 
 /**
  *
@@ -22,10 +23,13 @@ public class MenuComprobar extends JFrame implements ActionListener {
     private JButton btnER2;
     private JLabel resultado;
     private JButton btnVolver;
+    private MaquinaDeEstados mde1, mde2;
     
-    public MenuComprobar() {
+    public MenuComprobar(MaquinaDeEstados mde1, MaquinaDeEstados mde2) {
         super("Compiladores - PL1");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.mde1 = mde1;
+        this.mde2 = mde2;
         //this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
@@ -122,16 +126,16 @@ public class MenuComprobar extends JFrame implements ActionListener {
         
         if(componente == btnER1){
             
-            // Llamar AFD1.comprobar()
+            cadenaCorrecta = mde1.compruebaCadena(tfCadena.getText());
             
         } else if(componente == btnER2){
             
-            // Llamar AFD2.comprobar()
+            cadenaCorrecta = mde2.compruebaCadena(tfCadena.getText());
             
         } else if(componente == btnVolver) {
             
             this.setVisible(false);
-            MenuPrincipal mp = new MenuPrincipal();
+            MenuPrincipal mp = new MenuPrincipal(mde1, mde2);
             
         }
         
