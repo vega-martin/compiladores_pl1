@@ -20,11 +20,13 @@ public class MaquinaDeEstados {
         estadoActual = afd.getEstadoInicial();
     }
     
-    private void aceptaCaracter(Character letra) {
+    private Integer aceptaCaracter(Character letra) {
         Integer estadoTmp = afd.getSiguienteEstado(estadoActual, letra);
-        if(estadoTmp == null) {
-            //throw Exception;
+        if(estadoTmp == -1) {
+            return estadoTmp;
         }
+        estadoActual = estadoTmp;
+        return estadoActual;
     }
     
     private boolean isFinal() {
@@ -32,15 +34,18 @@ public class MaquinaDeEstados {
     }
     
     public boolean compruebaCadena(String cadena) {
+        Integer estadoDevuelto;
         for(int i = 0; i < cadena.length(); i++) {
-            try {
-                this.aceptaCaracter(cadena.charAt(i));
-                if((this.isFinal()) && ((i-cadena.length()) <= 1)) {
-                    return true;
-                }
-            } catch(Exception e) {
             
+            estadoDevuelto = this.aceptaCaracter(cadena.charAt(i));
+            if(estadoDevuelto == -1) {
+                return false;
             }
+            
+            if((this.isFinal()) && ((i-cadena.length()) < 1)) {
+                return true;
+            }
+            
         }
         return false;
     }
