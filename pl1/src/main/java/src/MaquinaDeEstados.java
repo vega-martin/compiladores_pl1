@@ -34,6 +34,7 @@ public class MaquinaDeEstados {
     }
     
     public boolean compruebaCadena(String cadena) {
+        this.inicializar();
         Integer estadoDevuelto;
         for(int i = 0; i < cadena.length(); i++) {
             
