@@ -119,7 +119,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
             
         } else if(componente == btnIntercambiar) {
             
-            // Llamar a intercambiar matrices
+            mde1.intercambiarMatriz(mde2);
             
             JOptionPane.showMessageDialog(this,
                 "Las matrices de estado se han intercambiado correctamente.\nTenga cuidado a la hora de seleccionar las ERs a partir de ahora.",

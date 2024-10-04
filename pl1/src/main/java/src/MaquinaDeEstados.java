@@ -1,6 +1,7 @@
 package src;
 
 import java.lang.Exception;
+import java.util.HashMap;
 
 /**
  *
@@ -14,6 +15,14 @@ public class MaquinaDeEstados {
     public MaquinaDeEstados(Automata afd) {
         this.afd = afd;
         inicializar();
+    }
+    
+    public void setAutomata(Automata automata) {
+        this.afd = automata;
+    }
+    
+    public Automata getAutomata() {
+        return this.afd;
     }
     
     private void inicializar() {
@@ -60,6 +69,14 @@ public class MaquinaDeEstados {
         String stringCadenasGeneradas = "hoal";
         
         return stringCadenasGeneradas;
+    }
+    
+    public void intercambiarMatriz(MaquinaDeEstados mde) {
+        
+        Automata automataTmp;
+        automataTmp = mde.getAutomata();
+        mde.setAutomata(this.getAutomata());
+        this.setAutomata(automataTmp);
     }
     
 }
