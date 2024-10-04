@@ -5,7 +5,7 @@ src\MaquinaDeEstados.class
 ui\InterfazGráfica.class
 ui\MenuPrincipal.class
 ui\InterfazGráfica$2.class
-src\Menu.class
+src\Main.class
 src\Automata.class
 ui\InterfazGráfica$3.class
 ui\MenuComprobar.class

@@ -1,7 +1,6 @@
 package src;
 
 import java.lang.Exception;
-import java.util.List;
 
 /**
  *
@@ -12,10 +11,8 @@ public class MaquinaDeEstados {
     private Integer estadoActual;
     private Automata afd;
     
-    public MaquinaDeEstados(List alfabeto, List estados, Integer estadoInicial,
-            List estadosFinales, List<List<Integer>> estadoSalto) {
-        
-        afd = new Automata(alfabeto, estados, estadoInicial, estadosFinales, estadoSalto);
+    public MaquinaDeEstados(Automata afd) {
+        this.afd = afd;
         inicializar();
     }
     
