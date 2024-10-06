@@ -68,24 +68,18 @@ public class MaquinaDeEstados {
         return false;
     }
     
-    public String generaCadenas(int cantidad, int longitud){
-        List<String> cadenasGeneradas = new ArrayList<>();
-        
+    public String generaCadenas(int cantidad, int longitud){        
         // Código para generar cadenas
         Nodo raiz = new Nodo("");
-        List<String> combinaciones = new ArrayList<>();
-        generarRamas(raiz, cantidad, longitud, combinaciones);
-        System.out.println("Cadenas generadas:");
-        for(String cadena:combinaciones) {
-            System.out.println(cadena);
-        }
-        
+        List<String> cadenasGeneradas = new ArrayList<>();
+        generarRamas(raiz, cantidad, longitud, cadenasGeneradas);
+                
         // Código para formatear cadena final generada
         String stringCadenasGeneradas = "";
         for(String cadena:cadenasGeneradas) {
             stringCadenasGeneradas = stringCadenasGeneradas + cadena + "\n";
         }
-        System.out.println(stringCadenasGeneradas);
+        
         return stringCadenasGeneradas.toString();
     }
     
