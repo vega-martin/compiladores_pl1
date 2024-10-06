@@ -63,9 +63,12 @@ public class MaquinaDeEstados {
     public String generaCadenas(int cantidad, int longitud){
         String cadenasGeneradas[] = new String[cantidad];
         
-        for(int i = 0; i <= cantidad; i++){
-            // Codigo para generar cadenas
-        }
+        // Código para generar cadenas 
+        
+        // Código para comprobar cadenas necesarias o hasta que no haya más
+        
+        // Código para formatear cadena final generada
+        
         String stringCadenasGeneradas = "hoal";
         
         return stringCadenasGeneradas;
