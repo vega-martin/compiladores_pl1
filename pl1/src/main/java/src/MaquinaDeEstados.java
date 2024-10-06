@@ -74,49 +74,37 @@ public class MaquinaDeEstados {
         // Código para generar cadenas
         Nodo raiz = new Nodo("");
         List<String> combinaciones = new ArrayList<>();
-        generarRamas(raiz, longitud, combinaciones);
-        
-        // Código para comprobar cadenas necesarias o hasta que no haya más
-        int cadenasComprobadas = 0;
-        boolean hayMasCombinaciones = true;
-        boolean esValido = false;
-        int i = 0;
-        String cadenaComprobar = "";
-        while((cantidad - cadenasComprobadas != 0) || !hayMasCombinaciones) {
-            esValido = false;
-            if(combinaciones.get(i+1) != null) {
-                cadenaComprobar = combinaciones.get(i);
-                esValido = this.compruebaCadena(cadenaComprobar);
-                if(esValido) {
-                    cadenasGeneradas.add(cadenaComprobar);
-                }
-                cadenasComprobadas++;
-            } else {
-                hayMasCombinaciones = false;
-            }
+        generarRamas(raiz, cantidad, longitud, combinaciones);
+        System.out.println("Cadenas generadas:");
+        for(String cadena:combinaciones) {
+            System.out.println(cadena);
         }
         
         // Código para formatear cadena final generada
         String stringCadenasGeneradas = "";
         for(String cadena:cadenasGeneradas) {
-            stringCadenasGeneradas.concat(cadena);
-            stringCadenasGeneradas.concat("\n");
+            stringCadenasGeneradas = stringCadenasGeneradas + cadena + "\n";
         }
-        
-        return stringCadenasGeneradas;
+        System.out.println(stringCadenasGeneradas);
+        return stringCadenasGeneradas.toString();
     }
     
-    private void generarRamas(Nodo nodo, int longitud, List<String> combinaciones) {
-        // Si alcanzamos la longitud deseada, agregamos la cadena a la lista de combinaciones
-        if (nodo.cadena.length() == longitud) {
-            combinaciones.add(nodo.cadena);
+    private void generarRamas(Nodo nodo, int cantidad, int longitud, List<String> combinaciones) {
+        
+        if(combinaciones.size() >= cantidad) {
+            return;
+        }
+        
+        if(nodo.cadena.length() == longitud) {
+            if (this.compruebaCadena(nodo.cadena)) {
+                combinaciones.add(nodo.cadena);
+            }
             return;
         }
 
-        // Generar los hijos (agregar 'a', 'b' o 'c' a la cadena)
-        for (char letra:afd.getAlfabeto()) {
+        for(char letra:afd.getAlfabeto()) {
             Nodo hijo = new Nodo(nodo.cadena + letra);  // Crear un nuevo nodo hijo
-            generarRamas(hijo, longitud, combinaciones);  // Llamada recursiva
+            generarRamas(hijo, cantidad, longitud, combinaciones);  // Llamada recursiva
         }
     }
     

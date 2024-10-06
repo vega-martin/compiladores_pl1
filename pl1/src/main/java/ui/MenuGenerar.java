@@ -223,11 +223,14 @@ public class MenuGenerar extends JFrame implements ActionListener {
                 String cadenas = "";
 
                 if(isER1seleccionado) {
+                    System.out.println("generar cadenas ER1");
                     cadenas = mde1.generaCadenas(cantidad, longitud);
                 } else {
+                    System.out.println("generar cadenas ER2");
                     cadenas = mde2.generaCadenas(cantidad, longitud);
                 }
-
+                System.out.println("hola");
+                System.out.println("Cadenas: " + cadenas);
                 taCadenasGeneradas.setText(cadenas);
             } else {
                 JOptionPane.showMessageDialog(this,
