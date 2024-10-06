@@ -1,13 +1,9 @@
 ui\MenuGenerar.class
 ui\MenuGenerar$1.class
-ui\InterfazGráfica$1.class
-src\MaquinaDeEstados.class
-ui\InterfazGráfica.class
-ui\MenuPrincipal.class
-ui\InterfazGráfica$2.class
-src\Main.class
 src\Automata.class
-ui\InterfazGráfica$3.class
+src\MaquinaDeEstados.class
+ui\MenuPrincipal.class
+src\Main.class
 ui\MenuComprobar.class
-ui\InterfazGráfica$4.class
 ui\MenuGenerar$2.class
+src\MaquinaDeEstados$Nodo.class

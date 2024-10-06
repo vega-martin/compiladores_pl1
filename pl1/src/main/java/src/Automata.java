@@ -51,6 +51,10 @@ public class Automata {
     public Integer getEstadoInicial() {
         return this.estadoInicial;
     }
+
+    public List<Character> getAlfabeto() {
+        return alfabeto;
+    }
     
     public boolean esFinal(Integer estado) {
         return estadosFinales.contains(estado);

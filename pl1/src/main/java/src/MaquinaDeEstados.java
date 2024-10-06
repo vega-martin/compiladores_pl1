@@ -1,7 +1,7 @@
 package src;
 
-import java.lang.Exception;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -11,6 +11,14 @@ public class MaquinaDeEstados {
     
     private Integer estadoActual;
     private Automata afd;
+    
+    private class Nodo {
+        String cadena;
+        Nodo(String cd) {
+            this.cadena = cd;
+        }
+    }
+    
     
     public MaquinaDeEstados(Automata afd) {
         this.afd = afd;
@@ -61,17 +69,55 @@ public class MaquinaDeEstados {
     }
     
     public String generaCadenas(int cantidad, int longitud){
-        String cadenasGeneradas[] = new String[cantidad];
+        List<String> cadenasGeneradas = new ArrayList<>();
         
-        // Código para generar cadenas 
+        // Código para generar cadenas
+        Nodo raiz = new Nodo("");
+        List<String> combinaciones = new ArrayList<>();
+        generarRamas(raiz, longitud, combinaciones);
         
         // Código para comprobar cadenas necesarias o hasta que no haya más
+        int cadenasComprobadas = 0;
+        boolean hayMasCombinaciones = true;
+        boolean esValido = false;
+        int i = 0;
+        String cadenaComprobar = "";
+        while((cantidad - cadenasComprobadas != 0) || !hayMasCombinaciones) {
+            esValido = false;
+            if(combinaciones.get(i+1) != null) {
+                cadenaComprobar = combinaciones.get(i);
+                esValido = this.compruebaCadena(cadenaComprobar);
+                if(esValido) {
+                    cadenasGeneradas.add(cadenaComprobar);
+                }
+                cadenasComprobadas++;
+            } else {
+                hayMasCombinaciones = false;
+            }
+        }
         
         // Código para formatear cadena final generada
-        
-        String stringCadenasGeneradas = "hoal";
+        String stringCadenasGeneradas = "";
+        for(String cadena:cadenasGeneradas) {
+            stringCadenasGeneradas.concat(cadena);
+            stringCadenasGeneradas.concat("\n");
+        }
         
         return stringCadenasGeneradas;
+    }
+    
+    private void generarRamas(Nodo nodo, int longitud, List<String> combinaciones) {
+        // Si alcanzamos la longitud deseada, agregamos la cadena a la lista de combinaciones
+        if (nodo.cadena.length() == longitud) {
+            combinaciones.add(nodo.cadena);
+            return;
+        }
+
+        // Generar los hijos (agregar 'a', 'b' o 'c' a la cadena)
+        for (char letra:afd.getAlfabeto()) {
+            Nodo hijo = new Nodo(nodo.cadena + letra);  // Crear un nuevo nodo hijo
+            generarRamas(hijo, longitud, combinaciones);  // Llamada recursiva
+        }
     }
     
     public void intercambiarMatriz(MaquinaDeEstados mde) {

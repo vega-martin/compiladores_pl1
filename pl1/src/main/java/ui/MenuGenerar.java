@@ -220,7 +220,7 @@ public class MenuGenerar extends JFrame implements ActionListener {
             if(isERseleccionado && (tfLongitud.getText() != "") && (tfNumero.getText() != "")){
                 int cantidad = Integer.parseInt(tfNumero.getText());
                 int longitud = Integer.parseInt(tfLongitud.getText());
-                String cadenas = "hola\nquetal";
+                String cadenas = "";
 
                 if(isER1seleccionado) {
                     cadenas = mde1.generaCadenas(cantidad, longitud);
